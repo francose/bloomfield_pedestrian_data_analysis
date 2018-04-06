@@ -31,14 +31,15 @@ def get_column_names(num=[]):
         m = max(num)
         rng = range(1, m - lenght_first + 2)
         #remove )
-        rng = first[:-1] + rng
+        
         return rng
 
 
 
 def main():
     column_names = get_column_names()
-    print(column_names)
+    df = pd.read_csv(raw_data, sep="\s+", names=get_column_names(), index_col=[0], skiprows=1)
+    print(df)
 
 
 if __name__ == '__main__':
