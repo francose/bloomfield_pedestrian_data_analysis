@@ -1,9 +1,13 @@
 ## Contributing to Bloomfield Pedestrian Data Analysis
 
+## Virtualenv & Pip :
+
   1- Before starting, create the virtual environment:
+
     virtualenv --python=python3 .
 
   2- Activate the virtualenv:  
+
     source bin/activate
 
   3 -Then get the packages:
@@ -37,7 +41,6 @@
   to push :
 
     git push -u origin <branch name>
-
 
   to remove :
 
