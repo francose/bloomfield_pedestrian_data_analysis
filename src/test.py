@@ -9,19 +9,37 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
+#supporting modules
+import csv, json
+
 
 
 #gloabls
 raw_data = '../data/CrashData.csv'
 
+#preprocessing
+def get_column_names(num=[]):
 
-def read_data():
-    test_read  = pd.read_csv(raw_data)
-    print(test_read)
+    with open(raw_data, 'r') as datas:
+        reader = csv.reader(datas)
+        for i, row in enumerate(reader):
+            if (i == 0):
+                first = ''.join(row).split()
+                lenght_first = len(first)
+                # print(first, lenght_firt)
+            num.append(len(''.join(row).split()))
+        m = max(num)
+        rng = range(1, m - lenght_first + 2)
+        #remove )
+        rng = first[:-1] + rng
+        return rng
+
 
 
 def main():
-    read = read_data()
+    column_names = get_column_names()
+    print(column_names)
+
 
 if __name__ == '__main__':
     main()
