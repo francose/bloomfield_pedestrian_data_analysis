@@ -19,7 +19,6 @@ raw_data = '../data/CrashData.csv'
 
 #preprocessing
 def get_column_names(num=[]):
-
     with open(raw_data, 'r') as datas:
         reader = csv.reader(datas)
         for i, row in enumerate(reader):
@@ -30,17 +29,25 @@ def get_column_names(num=[]):
             num.append(len(''.join(row).split()))
         m = max(num)
         rng = range(1, m - lenght_first + 2)
-        #remove )
-        
         return rng
+
+
+def processing__(n=30):
+    column_names = get_column_names()
+    #post processing
+    df = pd.read_csv(raw_data, sep="\s+", names=get_column_names(), index_col=[0], skiprows=1)
+    df1 = pd.read_csv(raw_data, sep='\s+', names=range(n))
+    #removes all NaN values
+    df1 = df1.dropna(axis=1, how='all')
+    df1.columns = df1.loc[0].dropna()[:1].append(pd.Series(range(1, len(df1.columns) - len(df1.loc[0].dropna()[:-1]) + 1 )))
+    df1 = df1.ix[1:]
+
+    print(df1.head())
 
 
 
 def main():
-    column_names = get_column_names()
-    df = pd.read_csv(raw_data, sep="\s+", names=get_column_names(), index_col=[0], skiprows=1)
-    print(df)
-
+    process = processing__()
 
 if __name__ == '__main__':
     main()
