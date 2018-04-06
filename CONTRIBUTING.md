@@ -11,7 +11,8 @@
     pip install -r requirements.txt
 
   3.1 - if you need to update python packages please use this command below :
-        "note that when updating python packages, update should run on same level with src folder"  
+        "note that when updating python packages, update should run on same level with src folder"
+
     pip freeze > requirements.txt  
 
 
@@ -25,7 +26,8 @@
 
   to Add :
 
-    git add <folder name> or
+    git add <folder name>
+    or
     git add .
 
   to commit :
@@ -39,4 +41,4 @@
 
   to remove :
 
-    git rm -r --cached bin
+    git rm -r --cached <folder name>
