@@ -1,5 +1,3 @@
-,,,,,,,,,,,Protection,,,,,,,,
-,,,,,,,,,,,0,Nothing,,,,,,,
 PED_AGE,CRASH_YEAR,Municipality,CRASH_TIME,Crash_Date,CRASH_LOCATION,CROSS_STREET_NAME,DISTANCE_TO_Cross_Street,Intersection,pedestrians_killed,Pedestrians_Injured,1,Yield,Major Street Protection,Minor Street Protection,Major Street Speed,Minor Street Speed,Major Street Lanes,Minor Street Lanes,Total Lanes
 25,2014,Bloomfield Township,17:02,9/13/14,100 BLOOMFIELD AVE,,NULL,2,0,1,2,Stop,4,4,,,5,4,9
 64,2012,Bloomfield Township,10:39,12/10/12,11 BROAD ST,,NULL,2,0,1,3,Flashing Light,,,,,,,
