@@ -7,7 +7,7 @@ Purpose : it is a temporarly test file to mock the data set.
 # core modules
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 
 # supporting modules
 import csv
@@ -25,8 +25,6 @@ def preprocessing():
     dropped = df.dropna(axis=1, how="any")
     correlation = dropped.corr(method='pearson')
     print(correlation)
-
-
 
 
 def main():
