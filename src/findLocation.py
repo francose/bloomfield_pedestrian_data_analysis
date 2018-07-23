@@ -17,13 +17,19 @@ temp=u"""a,b
 None,NaN
 a,8"""
 
+
+
 Path = "../data/paramusdata.csv"
 
-def read_data(path):
-    data = []
-    df = pd.read_csv(path, keep_default_na=False,na_values=['NaN'])
-    new_dataframe = df['CRASH_LOCATION'] + df['CROSS_STREET_NAME']
-    data.append(new_dataframe)
-    print(data)
 
-read_data(Path)
+def main():
+    data = []
+    df = pd.read_csv(Path, keep_default_na=False,na_values=['NaN'])
+    new_dataframe = df['CRASH_LOCATION'] + df['CROSS_STREET_NAME']
+    for i in new_dataframe:
+        data.append(new_dataframe)
+    file = open('../data/locations.json', 'w')
+    file.write(str(data))
+
+if __name__ == '__main__':
+    main()
