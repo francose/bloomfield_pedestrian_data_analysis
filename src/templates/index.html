@@ -11,17 +11,15 @@
 
   <script type="text/javascript">
 
-    var path = " ../../data/locations.json";
+    var path = " ./locations.json";
+    fetch("./locations.json").then(x => x.json()).then(json => {
+      var jsonData = JSON.parse(path);
+      for (var i = 0; i < length(jsonData); ++i){
+        var locations = [i];
+      }
+    })
 
 
-
-    var locations = [
-      ['BERGEN COUNTY 80 INJ 17', BERGEN COUNTY 80 INJ 17, ],
-      ['Coogee Beach', -33.923036, 151.259052, 5],
-      ['Cronulla Beach', -34.028249, 151.157507, 3],
-      ['Manly Beach', -33.80010128657071, 151.28747820854187, 2],
-      ['Maroubra Beach', -33.950198, 151.259302, 1]
-    ];
 
     var map = new google.maps.Map(document.getElementById('map'), {
       zoom: 10,
