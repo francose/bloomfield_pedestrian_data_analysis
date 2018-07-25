@@ -11,13 +11,9 @@ def main():
 
     return render_template('index.html')
 
-
-
-
-
 @app.route('/send')
 def send():
-    return "<a href=%s>file</a>" % url_for('static', filename='locations.json')
+    return "<a href=%s>file</a>" % url_for('static', filename='Coordinates.json')
 
 if __name__ == "__main__":
     app.run(debug=True)
