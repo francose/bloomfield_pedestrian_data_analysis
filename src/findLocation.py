@@ -39,7 +39,12 @@ def Location_Result():
         url = i['paramus']
         try:
             request = requests.post(url)
-            print request
+            if request.status_code == 200:
+                time.sleep(.90)
+                json_data = request.json()
+                file = createFile(json_data)
+            else:
+                pass
         except ValueError:
             print requests.raise_for_status()
     return request
