@@ -18,8 +18,8 @@ def extractColumn():
     CRASH_LOCATION = df.CRASH_LOCATION
     return CRASH_LOCATION
 
-def createFile(data):
-    with open('./static/locations.json', 'w') as file:
+def createFile( path,data):
+    with open(path, 'w') as file:
         json.dump(data ,file)
         file.close
 
@@ -46,13 +46,14 @@ def Location_Result():
                 json_data = request.json()
                 for item in json_data['results']:
                     data.append(item)
-                    createFile(data)
+                    createFile('./static/locations.json',data)
         except ValueError:
             print requests.raise_for_status()
     return request
 
 
 def getCoordinates(path='./static/locations.json'):
+    dataFrame = []
     jsonData = open(path,'r')
     locations_list = json.load(jsonData)
     for main in locations_list:
@@ -60,30 +61,15 @@ def getCoordinates(path='./static/locations.json'):
         location_iter = main_iterator["location"]
         lat_iter = location_iter["lat"]
         lng_iter = location_iter["lng"]
-        print lat_iter, lng_iter
+        dataFrame.append({'lat': lat_iter,'lng':lng_iter})
+    return dataFrame
 
 def main():
     results = getCoordinates()
+    file = createFile('./static/Coordinates.json', results)
     print results
 
     # storeDta = createFile()
 
 if __name__ == '__main__':
     main()
-
-
-
-
-
-
-
-
-# for i in new_dataframe:
-#     newURL = url+i+", paramus"
-#     # print newURL
-#     time.sleep(.90)
-#     r = requests.post(newURL)
-#     json_data = r.json()
-#     for x in json_data:
-#         s =json_data['results']
-#         json.dump(s, file)
