@@ -19,7 +19,7 @@ def extractColumn():
     return CRASH_LOCATION
 
 def createFile(data):
-    with open('./static/locationsss.json', 'w') as file:
+    with open('./static/locations.json', 'w') as file:
         json.dump(data ,file)
         file.close
 
@@ -49,12 +49,21 @@ def Location_Result():
                     createFile(data)
         except ValueError:
             print requests.raise_for_status()
-
-
     return request
 
+
+def getCoordinates(path='./static/locations.json'):
+    jsonData = open(path,'r')
+    locations_list = json.load(jsonData)
+    for main in locations_list:
+        main_iterator = main["geometry"]
+        location_iter = main_iterator["location"]
+        lat_iter = location_iter["lat"]
+        lng_iter = location_iter["lng"]
+        print lat_iter, lng_iter
+
 def main():
-    results = Location_Result()
+    results = getCoordinates()
     print results
 
     # storeDta = createFile()
