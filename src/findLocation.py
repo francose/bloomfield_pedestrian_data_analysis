@@ -21,6 +21,7 @@ def extractColumn():
 def createFile(data):
     with open('./static/locationsss.json', 'w') as file:
         json.dump(data ,file)
+        file.close
 
 def URL_POSTFIX():
     data = {}
@@ -34,6 +35,7 @@ def URL_POSTFIX():
     return data['URL']
 
 def Location_Result():
+    data = []
     urls = URL_POSTFIX()
     for i in urls:
         url = i['paramus']
@@ -42,11 +44,13 @@ def Location_Result():
             if request.status_code == 200:
                 time.sleep(.90)
                 json_data = request.json()
-                file = createFile(json_data)
-            else:
-                pass
+                for item in json_data['results']:
+                    data.append(item)
+                    createFile(data)
         except ValueError:
             print requests.raise_for_status()
+
+
     return request
 
 def main():
