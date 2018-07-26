@@ -1,2 +1,2 @@
 Pedestrian Data Analysis
-![Screenchot](./src/static/example.png)
+![Screenshot](./src/static/example.png)
