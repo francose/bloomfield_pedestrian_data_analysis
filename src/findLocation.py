@@ -59,9 +59,12 @@ def getCoordinates(path='./static/locations.json'):
     for main in locations_list:
         main_iterator = main["geometry"]
         location_iter = main_iterator["location"]
+        address_components = main["address_components"]
+        # long_name = address_components["long_name"]
+        # print(long_name)
         lat_iter = location_iter["lat"]
         lng_iter = location_iter["lng"]
-        dataFrame.append({'lat': lat_iter,'lng':lng_iter})
+        dataFrame.append({'A':"A", 'lat': lat_iter,'lng':lng_iter})
     return dataFrame
 
 def main():
