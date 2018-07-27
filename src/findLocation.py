@@ -13,16 +13,14 @@ import csv, json, requests,time
 READ_DATA_PATH = "../data/paramusdata.csv"
 POST_URL = "http://maps.google.com/maps/api/geocode/json?address="
 
+#1
 def extractColumn():
     df = pd.read_csv(READ_DATA_PATH, keep_default_na=False,na_values=['NaN'])
+    pd.options.display.max_rows = 999
     CRASH_LOCATION = df.CRASH_LOCATION
     return CRASH_LOCATION
 
-def createFile( path,data):
-    with open(path, 'w') as file:
-        json.dump(data ,file)
-        file.close
-
+#2
 def URL_POSTFIX():
     data = {}
     data['URL'] = []
@@ -34,6 +32,13 @@ def URL_POSTFIX():
         })
     return data['URL']
 
+#4
+def createFile( path,data):
+    with open(path, 'w') as file:
+        json.dump(data ,file)
+        file.close
+
+#3
 def Location_Result():
     data = []
     urls = URL_POSTFIX()
@@ -52,6 +57,7 @@ def Location_Result():
     return request
 
 
+#4
 def getCoordinates(path='./static/locations.json'):
     dataFrame = []
     jsonData = open(path,'r')
@@ -71,8 +77,9 @@ def main():
     results = getCoordinates()
     file = createFile('./static/Coordinates.json', results)
     print results
+    # Location_Result()
 
-    # storeDta = createFile()
+
 
 if __name__ == '__main__':
     main()
