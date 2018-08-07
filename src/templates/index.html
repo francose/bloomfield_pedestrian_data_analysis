@@ -36,7 +36,7 @@
 
       var map = new google.maps.Map(document.getElementById('map'), {
         zoom: 10,
-        center: new google.maps.LatLng( 40.9467439,  -74.0619826),
+        center: new google.maps.LatLng( 40.951673,  -74.093901),
         mapTypeId: google.maps.MapTypeId.ROADMAP
       });
 
@@ -47,7 +47,7 @@
       for (i = 0; i < locations.length; i++) {
         var x = locations[i];
         var obj = Object.assign(x);
-        var coor = [ obj.lat, obj.lng];
+        var coor = [ obj.A, obj.lat, obj.lng];
 
         marker = new google.maps.Marker({
           position: new google.maps.LatLng(locations[i][1], locations[i][2]),
@@ -56,7 +56,7 @@
 
         google.maps.event.addListener(marker, 'click', (function(marker, i) {
           return function() {
-            infowindow.setContent(locations[0][1]);
+            infowindow.setContent(locations[i][0]);
             infowindow.open(map, marker);
           }
         })(marker, i));
